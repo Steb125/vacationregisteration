@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mealdiv{
+            border: 1px solid black;
+        }
+        table, th, td {
+            border: 1px solid black;
+        } 
+    </style>
+</head>
+<body>
+    <h1>Hello, {{loggedInUser.name}}!</h1>
+    <h3>Your Trip Schedules:</h3>
+    <table style="width:100%">
+        <tr>
+          <th>Destination</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Plan</th>
+
+        </tr>
+        {% for trip in favTrips %}
+        <tr>
+          <td><a href="/trips/{{trip.id}}">{{trip.destination}}</a></td>
+          <td>{{trip.start_date}}</td>
+          <td>{{trip.end_date}}</td>
+          <td>{{trip.description}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    <h3>Other User's Travel Plans:</h3>
+      <table style="width:100%">
+        <tr>
+          <th>Destination</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Join Trip</th>
+
+        </tr>
+        {% for trip in otherTrips %}
+        <tr>
+          <td><a href="/trips/{{trip.id}}">{{trip.destination}}</a></td>
+          <td>{{trip.start_date}}</td>
+          <td>{{trip.end_date}}</td>
+          <td><a href="/join/{{trip.id}}">Join</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+    <a href="/trips/add">Add Travel Plan</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>

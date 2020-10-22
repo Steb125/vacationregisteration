@@ -1,0 +1,28 @@
+Creating a new record
+ClassName.objects.create(field1="value for field1", field2="value for field2", etc.)
+
+Trip.objects.create(destination = "Paris", start_date = "2021-10-20", end_date = "2021-10-25", uploader = User.objects.get(id=1), description = "A trip to Paris" )
+
+Trip.objects.create(destination = "Bohol", start_date = "2021-11-20", end_date = "2021-11-25", uploader = User.objects.get(id=1), description = "A trip to Bohol" )
+
+Trip.objects.create(destination = "Singapore", start_date = "2021-12-20", end_date = "2021-12-25", uploader = User.objects.get(id=1), description = "A trip to Singapore" )
+
+Trip.objects.create(destination = "Australia", start_date = "2022-1-20", end_date = "2022-2-25", uploader = User.objects.get(id=1), description = "A trip to Australia" )
+
+Trip.objects.create(destination = "Romania", start_date = "2022-2-20", end_date = "2022-3-25", uploader = User.objects.get(id=2), description = "A trip to Romania" )
+
+Trip.objects.create(destination = "Australia", start_date = "2022-1-20", end_date = "2022-2-25", uploader = User.objects.get(id=7), description = "A trip to Australia" )
+
+Trip.objects.create(destination = "Australia", start_date = "2022-1-20", end_date = "2022-2-25", uploader = User.objects.get(id=8), description = "A trip to Australia" )
+
+#user 7 joins trips 1 and 2
+
+User.objects.get(id=7).trip_joined.add(Trip.objects.get(id=1))
+
+User.objects.get(id=7).trip_joined.add(Trip.objects.get(id=2))
+
+#user 8 joins trips 3 and 4
+
+User.objects.get(id=8).trip_joined.add(Trip.objects.get(id=3))
+
+User.objects.get(id=8).trip_joined.add(Trip.objects.get(id=4))
